@@ -54,7 +54,8 @@ class TestModels(unittest.TestCase):
                 "Smart TV, 2024", 59990.00, 8
             ),
         ]
-        Category("Компьютерная техника", "Топовые модели", products)
+        Category(
+            "Компьютерная техника", "Топовые модели", products)
         assert Product.total_products >= initial_count + len(products)
 
 
