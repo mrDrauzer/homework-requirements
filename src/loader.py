@@ -1,22 +1,27 @@
 import json
+import os
 from .models import Product, Category
 
 
 def load_data_from_json(filename):
     """
     Загружает категории и товары из JSON-файла.
-
-    Args:
-        filename (str): Путь к JSON-файлу
-
-    Returns:
-        list: Список объектов Category с товарами
     """
     with open(filename, 'r', encoding='utf-8') as file:
         data = json.load(file)
 
     categories = []
-    for cat_data in data['categories']:
+
+    # Если data - это список категорий
+    if isinstance(data, list):
+        categories_data = data
+    # Если data - это словарь с ключом 'categories'
+    elif isinstance(data, dict) and 'categories' in data:
+        categories_data = data['categories']
+    else:
+        raise ValueError("Неправильная структура JSON-файла")
+
+    for cat_data in categories_data:
         products = []
         for prod_data in cat_data['products']:
             product = Product(
