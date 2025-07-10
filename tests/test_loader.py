@@ -1,10 +1,8 @@
-import pytest
 import unittest
 import json
 import tempfile
 import os
 from src.loader import load_data_from_json
-from src.models import Product, Category
 
 
 class TestLoader(unittest.TestCase):
@@ -21,19 +19,19 @@ class TestLoader(unittest.TestCase):
                             "name": "Test Product",
                             "description": "Test product description",
                             "price": 100,
-                            "quantity": 5
+                            "quantity": 5,
                         }
-                    ]
+                    ],
                 }
             ]
         }
 
         # Создание временного файла с правильной кодировкой
         self.temp_file = tempfile.NamedTemporaryFile(
-            mode='w',
+            mode="w",
             delete=False,
-            suffix='.json',
-            encoding='utf-8'  # Добавить явное указание кодировки
+            suffix=".json",
+            encoding="utf-8",  # Добавить явное указание кодировки
         )
         json.dump(self.test_data, self.temp_file, ensure_ascii=False, indent=2)
         self.temp_file.close()
@@ -53,5 +51,5 @@ class TestLoader(unittest.TestCase):
         self.assertEqual(categories[0].products[0].price, 100)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

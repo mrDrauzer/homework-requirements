@@ -9,7 +9,7 @@ def main():
 
     # Загрузка данных из JSON
     try:
-        categories = load_data_from_json('basa/products.json')
+        categories = load_data_from_json("basa/products.json")
 
         # Вывод информации о категориях и товарах
         for category in categories:
@@ -18,10 +18,13 @@ def main():
             print("Товары:")
 
             for product in category.products:
-                print(f"  - {product.name}: {product.price} руб. (в наличии: {product.quantity})")
+                print(
+                    f"  - {product.name}: {product.price} руб. "
+                    f"(в наличии: {product.quantity})"
+                )
 
         # Статистика
-        print(f"\nОбщая статистика:")
+        print("\nОбщая статистика:")
         print(f"Всего категорий: {Category.total_categories}")
         print(f"Всего товаров: {Product.total_products}")
 

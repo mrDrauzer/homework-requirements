@@ -1,5 +1,6 @@
 class Product:
     """Класс для представления товара"""
+
     total_products = 0
 
     def __init__(self, name, description, price, quantity):
@@ -12,6 +13,7 @@ class Product:
 
 class Category:
     """Класс для представления категории товаров"""
+
     total_categories = 0
 
     def __init__(self, name, description, products=None):
