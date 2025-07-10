@@ -1,3 +1,4 @@
+import json
 from src.loader import load_data_from_json
 from src.models import Product, Category
 
@@ -8,7 +9,7 @@ def main():
 
     # Загрузка данных из JSON
     try:
-        categories = load_data_from_json('data/products.json')
+        categories = load_data_from_json('basa/products.json')
 
         # Вывод информации о категориях и товарах
         for category in categories:
