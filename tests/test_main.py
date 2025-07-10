@@ -1,5 +1,6 @@
 import pytest
-from main import Product, Category
+from src.models import Product, Category
+
 
 def test_product_initialization():
     product = Product(
