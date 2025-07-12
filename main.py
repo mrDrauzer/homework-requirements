@@ -26,7 +26,8 @@ def main():
         # Статистика
         print("\nОбщая статистика:")
         print(f"Всего категорий: {Category.total_categories}")
-        print(f"Всего товаров: {Product.total_products}")
+        total_products_count = sum(category.total_products for category in categories)
+        print(f"Всего товаров: {total_products_count}")
 
     except FileNotFoundError:
         print("Ошибка: файл products.json не найден!")

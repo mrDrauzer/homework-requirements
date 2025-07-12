@@ -41,22 +41,28 @@ class TestModels(unittest.TestCase):
         assert Category.total_categories == initial_count + 1
 
     def test_product_count_increment(self):
-        initial_count = Product.total_products
+        # Создаем продукты
         products = [
             Product(
                 "Игровой ноутбук ASUS ROG Strix G16",
-                "16”, Intel Core i7, 16ГБ, 512ГБ SSD",
+                "16\", Intel Core i7, 16ГБ, 512ГБ SSD",  # Исправлена кавычка
                 129990.00,
                 5,
             ),
             Product(
                 'Телевизор Samsung Crystal UHD 4K 55"',
-                "Smart TV, 2024", 59990.00, 8
+                "Smart TV, 2024",
+                59990.00,
+                8
             ),
         ]
-        Category(
+
+        # Создаем категорию с продуктами
+        category = Category(
             "Компьютерная техника", "Топовые модели", products)
-        assert Product.total_products >= initial_count + len(products)
+
+        # Проверяем, что количество продуктов в категории соответствует ожидаемому
+        assert category.total_products == len(products)
 
 
 if __name__ == "__main__":
